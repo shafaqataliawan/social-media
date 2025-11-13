@@ -1,0 +1,83 @@
+:root{
+  --bg:#071013;
+  --bg-soft:#0c1a1f;
+  --card:#0e2026;
+  --text:#e8fff9;
+  --muted:#9ec3bb;
+  --primary:#14b8a6; /* Teal */
+  --primary-600:#0d9488;
+  --accent:#a3e635; /* Lime */
+  --danger:#ef4444;
+  --success:#22c55e;
+  --border:#15343b;
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{margin:0;overflow-x:hidden;background:radial-gradient(1200px 700px at 10% -10%, rgba(20,184,166,.22) 0%, rgba(20,184,166,0) 60%), radial-gradient(900px 600px at 110% 10%, rgba(163,230,53,.18) 0%, rgba(163,230,53,0) 55%), linear-gradient(180deg,#071013 0%, #08151a 60%, #0a1b21 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+img,video{max-width:100%;display:block;border-radius:12px}
+
+.app{min-height:100%;display:flex;flex-direction:column;overflow-x:hidden}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(12,16,30,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.brand{font-weight:800;letter-spacing:.3px}
+.brand span{color:var(--primary)}
+.navlinks{display:flex;gap:12px}
+.navlinks a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+.navlinks a.active{color:var(--text);background:linear-gradient(135deg, rgba(20,184,166,.25), rgba(163,230,53,.2)); border:1px solid var(--border)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:4px;background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text)}
+.hamburger:focus{outline:2px solid var(--primary-600)}
+
+.main{width:100%;max-width:1100px;margin:0 auto;flex:1;padding:16px}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.row{display:flex;gap:12px;align-items:center}
+.space-between{display:flex;justify-content:space-between;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:10px;padding:10px 14px;background:var(--bg-soft);color:var(--text);cursor:pointer;transition:transform .08s ease, opacity .2s ease}
+.btn:active{transform:scale(.98)}
+.btn:hover{opacity:.95}
+.btn.primary{background:linear-gradient(135deg, var(--primary), var(--accent))}
+.btn.danger{background:var(--danger)}
+.btn.ghost{background:transparent;border:1px solid var(--border)}
+.input, textarea{width:100%;background:#0c111b;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:10px 12px}
+textarea{min-height:80px;resize:vertical}
+.small{font-size:.85rem;color:var(--muted)}
+.count{font-weight:600;color:var(--text)}
+.badge{font-size:.75rem;background:#132038;color:var(--text);padding:4px 8px;border-radius:999px;border:1px solid var(--border)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+
+.post{display:flex;gap:12px}
+.avatar{width:44px;height:44px;border-radius:999px;background:#162235;border:1px solid var(--border);object-fit:cover}
+.post-body{flex:1}
+.post-actions{display:flex;gap:10px;margin-top:8px}
+.comment{background:#0e1522;border:1px solid var(--border);border-radius:12px;padding:10px;margin-top:8px}
+
+footer.site{margin-top:auto;border-top:1px solid var(--border);background:#0d1420}
+footer .inner{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:16px}
+footer a{color:var(--muted);text-decoration:none}
+
+@media (min-width: 900px){
+  .grid{grid-template-columns:2fr 1fr}
+  /* Sidebar sticky only on desktop */
+  .messages-sidebar{position:sticky; top:72px; height:calc(100vh - 140px)}
+}
+
+/* Mobile navbar behavior */
+@media (max-width: 768px){
+  .hamburger{display:flex}
+  .topnav{position:sticky}
+  .navlinks{display:none;position:fixed;left:12px;right:12px;top:56px;flex-direction:column;background:rgba(7,16,19,.98);border:1px solid var(--border);border-radius:12px;padding:8px;max-height:60vh;overflow:auto}
+  .navlinks.open{display:flex}
+  .navlinks a{padding:10px 12px}
+}
+
+/* Messages layout responsive to avoid overlap */
+.messages-layout{grid-template-columns:1fr}
+.messages-sidebar{height:auto}
+.messages-pane{display:flex;flex-direction:column}
+.messages-scroll{flex:1;overflow-y:auto;margin-top:8px;padding-right:6px}
+
+@media (min-width: 900px){
+  .messages-layout{grid-template-columns:300px 1fr}
+}
