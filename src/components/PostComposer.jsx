@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useApp } from '../context/AppContext'
 
-export default function PostComposer(){
+export default function PostComposer() {
   const { state, actions } = useApp()
   const [text, setText] = useState('')
   const [file, setFile] = useState(null)
@@ -9,25 +9,38 @@ export default function PostComposer(){
 
   const submit = (e) => {
     e.preventDefault()
-    if(!text.trim() && !file) return
+    if (!text.trim() && !file) return
     actions.createPost({ content: text, file })
     setText('')
     setFile(null)
-    if(fileRef.current) fileRef.current.value = ''
+    if (fileRef.current) fileRef.current.value = ''
   }
 
   return (
     <div className="card">
       <div className="post">
-        <img className="avatar" src={state.currentUser.avatar || 'https://api.dicebear.com/8.x/identicon/svg?seed=you'} alt="avatar"/>
+        <img className="avatar" src={state.currentUser.avatar || 'https://api.dicebear.com/8.x/identicon/svg?seed=you'} alt="avatar" />
         <div className="post-body">
           <form onSubmit={submit}>
-            <textarea className="input" placeholder="What's happening?" value={text} onChange={e=>setText(e.target.value)} />
-            <div className="space-between" style={{marginTop:8}}>
+            <textarea className="input" placeholder="What's happening?" value={text} onChange={e => setText(e.target.value)} />
+            <div className="space-between" style={{ marginTop: 8 }}>
               <div className="toolbar">
-                <input ref={fileRef} type="file" accept="image/*,video/*" onChange={e=>setFile(e.target.files?.[0]||null)} />
+                <input ref={fileRef} type="file" accept="image/*,video/*" onChange={e => setFile(e.target.files?.[0] || null)} />
               </div>
-              <button className="btn primary" type="submit">Post</button>
+              <button
+                className="btn primary"
+                type="submit"
+                style={{
+                  textAlign: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#ffffff !important'
+                }}
+              >
+                Post
+              </button>
+
             </div>
           </form>
         </div>
