@@ -90,3 +90,20 @@ footer a{color:var(--muted);text-decoration:none}
   .toolbar input[type="file"]{max-width:100%}
   .space-between .btn{width:100%}
 }
+
+/* Global mobile layout refinements */
+@media (max-width: 768px){
+  .main{padding:12px}
+  .grid{gap:12px}
+  .card{padding:12px}
+  .post{align-items:flex-start}
+  .avatar{width:36px;height:36px}
+  .row{flex-wrap:wrap}
+  .post video{max-height:50vh}
+}
+
+/* Very small screens */
+@media (max-width: 380px){
+  .topnav{padding:10px 12px}
+  .brand{font-size:1rem}
+}
